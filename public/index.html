@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <title>UKFPO Model</title>
+</head>
+
+<body>
+  <div class="main">
+    <h1>UKFPO - Preference Informed Allocation Model</h1>
+  </div>
+  <div class="main">
+    <ul id="dragList" class="drag-list">
+      <li class="drag-item rounded" draggable="true" id="em">East Midlands</li>
+      <li class="drag-item  rounded" draggable="true" id="eoe">East of England</li>
+      <li class="drag-item rounded" draggable="true" id="kss">Kent, Surrey & Sussex</li>
+      <li class="drag-item rounded" draggable="true" id="l">London</li>
+      <li class="drag-item rounded" draggable="true" id="lnr">Leicestershire, Northamptonshire and Rutland (LNR)</li>
+      <li class="drag-item rounded" draggable="true" id="t">Trent</li>
+      <li class="drag-item rounded" draggable="true" id="wmc">West Midlands Central</li>
+      <li class="drag-item rounded" draggable="true" id="wmn">West Midlands North</li>
+      <li class="drag-item rounded" draggable="true" id="wms">West Midlands South</li>
+      <li class="drag-item rounded" draggable="true" id="n">Northern</li>
+      <li class="drag-item rounded" draggable="true" id="nwoe">North West of England</li>
+      <li class="drag-item rounded" draggable="true" id="yh">Yorkshire and Humber</li>
+      <li class="drag-item rounded" draggable="true" id="o">Oxford</li>
+      <li class="drag-item rounded" draggable="true" id="w">Wessex</li>
+      <li class="drag-item rounded" draggable="true" id="p">Peninsula</li>
+      <li class="drag-item rounded" draggable="true" id="s">Severn</li>
+      <li class="drag-item rounded" draggable="true" id="ni">Northern Ireland</li>
+      <li class="drag-item rounded" draggable="true" id="wa">Wales</li>
+      <li class="drag-item rounded" draggable="true" id="s">Scotland</li>
+    </ul>
+
+  </div>
+  <div class="main" id="buttonPlusResult">
+    <button onclick="submitPreferences()" class="btn btn-primary">Submit</button>
+  </div>
+  <div class="main" id="resResult"></div>
+  <script src="./index.js"></script>
+</body>
+
+</html>
