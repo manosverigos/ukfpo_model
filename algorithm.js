@@ -1,5 +1,6 @@
 require("dotenv").config();
 const fs = require("fs");
+const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const mongodb = require("mongodb");
 const { MongoClient } = require("mongodb");
 
@@ -117,16 +118,36 @@ runAlgorithm = async () => {
         applicant.allocatedOnSecondPass != 1
       ) {
         applicant.allocation = "reserve";
+        applicant.allocatedOnSecondPass = 0
       }
     }
     console.log(sortedApplicants);
     console.log(scaledDeaneries);
 
-    fs.writeFileSync("results.json", JSON.stringify(sortedApplicants));
+    // fs.writeFileSync("results.json", JSON.stringify(sortedApplicants));
 
     const insertedAllocations = await database
       .collection("allocations")
       .insertMany(sortedApplicants);
+
+    const csvHeaders = [
+      { id: "preferenceList", title: "preferenceList" },
+      { id: "applicantNumber", title: "applicantNumber" },
+      { id: "rank", title: "rank" },
+      { id: "allocation", title: "allocation" },
+      { id: "allocatedOnFirstPass", title: "allocatedOnFirstPass" },
+      { id: "allocatedOnSecondPass", title: "allocatedOnSecondPass" },
+    ];
+
+    const csvWriter = createCsvWriter({
+      path: "results.csv", // Path to the output CSV file
+      header: csvHeaders,
+      fieldDelimiter:";"
+    });
+    csvWriter
+      .writeRecords(sortedApplicants)
+      .then(() => console.log("CSV file has been written successfully."))
+      .catch((error) => console.error("Error writing CSV file:", error));
   } catch (error) {
     console.log("oops");
     console.log(error);
